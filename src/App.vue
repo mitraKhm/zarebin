@@ -5,20 +5,21 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid>
+      <v-container fluid class="px-16">
         <v-row>
           <v-col>
-            <banner />
+            <banner v-if="false" />
           </v-col>
         </v-row>
         <v-row>
           <v-col
             md="9"
             cols="12"
+            class="d-flex flex-column"
           >
             <product-info :product="currentProduct" />
-            <product-price :product="currentProduct" />
-            <other-products :products="otherProducts" />
+<!--            <product-price :product="currentProduct" />-->
+            <other-products :products="otherProducts" @addToCart="addToCart" />
           </v-col>
           <v-col
             md="3"
@@ -46,7 +47,7 @@ import './assets/Fonts/IRANSans/css/font.scss'
 import Banner from './components/Banner';
 import CartComponent from './components/Cart';
 import ProductInfo from './components/ProductInfo';
-import ProductPrice from './components/ProductPrice';
+// import ProductPrice from './components/ProductPrice';
 import OtherProducts from './components/OtherProducts';
 import {Product, ProductList} from './Models/Product';
 import {Cart} from './Models/Cart';
@@ -57,7 +58,7 @@ export default {
   components: {
     AppBar,
     OtherProducts,
-    ProductPrice,
+    // ProductPrice,
     ProductInfo,
     CartComponent,
     Banner
@@ -73,6 +74,9 @@ export default {
     cart: new Cart()
   }),
   methods: {
+    addToCart (product) {
+      this.cart.cartItems.list.push(product)
+    },
     async getOtherProducts () {
       const response = await axios.get('https://alaatv.com/api/v2/product')
       if (response.status !== 200) {
@@ -91,11 +95,11 @@ export default {
 <style lang="scss">
 .theme--dark {
   &.v-application {
-    background: #26283b;
+    background: #26283b !important;
   }
   &.v-sheet {
     background-color: #313249;
-    border-color: #313249;
+    border-color: #313249 !important;
   }
 }
 </style>

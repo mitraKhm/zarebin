@@ -9,7 +9,7 @@
     </p>
     <div class="cart-item-box">
       <cart-item
-        v-for="item in 5"
+        v-for="item in 15"
         :key="item"
         class="cart-item mx-7"
       />

@@ -42,14 +42,14 @@
 </template>
 
 <script>
-import {CartItemList} from '../Models/CartItem';
+import {CartItem} from '../Models/CartItem';
 
 export default {
   name: 'CartItem',
   props:{
     value :{
-      type:CartItemList,
-      default:new CartItemList()
+      type:CartItem,
+      default:new CartItem()
     }
   },
   data(){

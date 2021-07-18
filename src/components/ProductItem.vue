@@ -18,7 +18,7 @@
       <v-btn
         color="deep-purple lighten-2"
         text
-        @click="addToCart(theProduct)"
+        @click="addToCart()"
       >
         <i class="fi-rr-shopping-cart-add"></i>
       </v-btn>
@@ -39,8 +39,8 @@ export default {
     }
   },
   methods:{
-    addToCart(theProduct){
-      this.$emit('chosenProduct', theProduct)
+    addToCart(){
+      this.$emit('chosenProduct', this.oneProduct)
     }
   }
 }

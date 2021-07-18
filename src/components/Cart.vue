@@ -21,6 +21,6 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 75px;
-  height: calc( 100vh - 86px );
+  max-height: calc( 100vh - 86px );
 }
 </style>

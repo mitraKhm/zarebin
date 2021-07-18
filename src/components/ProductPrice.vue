@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card elevation="0" color="#313249">
     قیمت محصول
   </v-card>
 </template>

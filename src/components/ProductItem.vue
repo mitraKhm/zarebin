@@ -1,5 +1,8 @@
 <template>
-  <v-card class="product-item-box" elevation="0">
+  <v-card
+    class="product-item-box"
+    elevation="0"
+  >
     <v-responsive :aspect-ratio="1">
       <v-card-text>
         آیتم محصول

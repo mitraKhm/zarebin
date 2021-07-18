@@ -31,6 +31,7 @@ export default {
   position: -webkit-sticky;
   position: sticky;
   top: 75px;
+  max-height: calc( 100vh - 86px );
   height: calc( 100vh - 86px );
   .title{
     padding-top: 20px;

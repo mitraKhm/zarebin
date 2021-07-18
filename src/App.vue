@@ -1,42 +1,7 @@
 <template>
   <!-- App.vue -->
   <v-app v-resize="onResize">
-    <v-app-bar
-      app
-      color="primary"
-      dark
-    >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
-
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
-
-      <v-spacer />
-
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
+    <app-bar />
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
@@ -51,15 +16,15 @@
             md="9"
             cols="12"
           >
-            <product-info />
-            <product-price />
-            <other-products />
+            <product-info :product="currentProduct" />
+            <product-price :product="currentProduct" />
+            <other-products :products="otherProducts" />
           </v-col>
           <v-col
             md="3"
             cols="12"
           >
-            <cart />
+            <cart-component v-model="cart" />
           </v-col>
         </v-row>
       </v-container>
@@ -75,27 +40,62 @@
 </template>
 
 <script>
+import axios from 'axios'
 import './assets/Fonts/Flaticons/css/uicons-regular-rounded.css'
 import './assets/Fonts/IRANSans/css/font.scss'
 import Banner from './components/Banner';
-import Cart from './components/Cart';
+import CartComponent from './components/Cart';
 import ProductInfo from './components/ProductInfo';
 import ProductPrice from './components/ProductPrice';
 import OtherProducts from './components/OtherProducts';
+import {Product, ProductList} from './Models/Product';
+import {Cart} from './Models/Cart';
+import AppBar from './components/AppBar';
 
 export default {
   name: 'App',
-
   components: {
+    AppBar,
     OtherProducts,
     ProductPrice,
     ProductInfo,
-    Cart,
+    CartComponent,
     Banner
   },
-
+  created() {
+    this.$vuetify.theme.dark = true
+    this.getOtherProducts()
+  },
   data: () => ({
-    //
+    windowSize: { 'x': 1920, 'y': 976 },
+    currentProduct: new Product(),
+    otherProducts: new ProductList(),
+    cart: new Cart()
   }),
+  methods: {
+    async getOtherProducts () {
+      const response = await axios.get('https://alaatv.com/api/v2/product')
+      if (response.status !== 200) {
+        return
+      }
+      this.otherProducts = new ProductList(response.data.data)
+      this.currentProduct = this.otherProducts.list[0]
+    },
+    onResize () {
+      this.windowSize =  { x: window.innerWidth, y: window.innerHeight }
+    },
+  }
 };
 </script>
+
+<style lang="scss">
+.theme--dark {
+  &.v-application {
+    background: #26283b;
+  }
+  &.v-sheet {
+    background-color: #313249;
+    border-color: #313249;
+  }
+}
+</style>

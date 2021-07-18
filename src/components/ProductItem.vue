@@ -2,7 +2,7 @@
   <v-card class="product-item-box" elevation="0">
     <v-responsive :aspect-ratio="1">
       <v-card-text>
-        Product item
+        آیتم محصول
       </v-card-text>
     </v-responsive>
   </v-card>

@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    Product info
+    اطلاعات محصول
   </v-card>
 </template>
 

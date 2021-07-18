@@ -1,12 +1,18 @@
 <template>
   <v-card class="cart">
-    cart
+    سبد خرید
+    <cart-item
+      v-for="item in 5"
+      :key="item"
+    />
   </v-card>
 </template>
 
 <script>
+import CartItem from './CartItem';
 export default {
-  name: 'Cart'
+  name: 'Cart',
+  components: {CartItem}
 }
 </script>
 

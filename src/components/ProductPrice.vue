@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    Product price
+    قیمت محصول
   </v-card>
 </template>
 

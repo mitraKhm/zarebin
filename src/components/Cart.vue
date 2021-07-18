@@ -1,5 +1,6 @@
 <template>
   <v-card class="cart">
+    سبد خرید
     <cart-item
       v-for="item in 5"
       :key="item"

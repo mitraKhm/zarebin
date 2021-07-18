@@ -1,5 +1,6 @@
 <template>
   <v-card>
+    محصولات دیگر
     <v-row>
       <v-col
         v-for="item in 20"

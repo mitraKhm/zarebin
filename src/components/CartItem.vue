@@ -1,6 +1,6 @@
 <template>
   <v-card>
-    cart item
+    آیتم سبد خرید
   </v-card>
 </template>
 

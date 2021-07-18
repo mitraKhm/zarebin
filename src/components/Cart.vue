@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="cart">
     cart
   </v-card>
 </template>
@@ -11,5 +11,10 @@ export default {
 </script>
 
 <style scoped>
-
+.cart {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 75px;
+  height: calc( 100vh - 86px );
+}
 </style>

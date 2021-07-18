@@ -9,13 +9,16 @@
     </v-card-text>
     <v-row>
       <v-col
-        v-for="(product,index) in products"
+        v-for="(product,index) in products.list"
         :key="index"
         md="3"
         sm="6"
         cols="12"
       >
-        <product-item :one-product="product" />
+        <product-item
+          :product="product"
+          @chosen-product="chosenProduct(product)"
+        />
       </v-col>
     </v-row>
   </v-card>
@@ -23,18 +26,23 @@
 
 <script>
 import ProductItem from './ProductItem';
-import {Product} from '@/Models/Product';
+import {ProductList} from '@/Models/Product';
 export default {
   name: 'OtherProducts',
   props:{
     products:{
-      type: Product,
+      type: ProductList,
       default(){
-        return new Product()
+        return new ProductList()
       }
     }
   },
-  components: {ProductItem}
+  components: {ProductItem},
+  methods:{
+    chosenProduct(product){
+      this.$emit('chosenProduct', product)
+    }
+  }
 }
 </script>
 

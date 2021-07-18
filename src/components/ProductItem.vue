@@ -12,15 +12,15 @@
       آیتم محصول
     </v-card-text>
     <v-card-text>
-      {{ oneProduct.title }}
+      {{ product.title }}
     </v-card-text>
     <v-card-actions>
       <v-btn
         color="deep-purple lighten-2"
         text
-        @click="addToCart()"
+        @click="addToCart"
       >
-        <i class="fi-rr-shopping-cart-add"></i>
+        <i class="fi-rr-shopping-cart-add" />
       </v-btn>
     </v-card-actions>
   </v-card>
@@ -31,7 +31,7 @@ import {Product} from '@/Models/Product';
 export default {
   name: 'ProductItem',
   props:{
-    oneProduct:{
+    product:{
       type: Product,
       default(){
         return new Product()
@@ -40,7 +40,7 @@ export default {
   },
   methods:{
     addToCart(){
-      this.$emit('chosenProduct', this.oneProduct)
+      this.$emit('chosenProduct', this.product)
     }
   }
 }

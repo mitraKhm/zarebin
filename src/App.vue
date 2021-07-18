@@ -40,6 +40,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import './assets/Fonts/Flaticons/css/uicons-regular-rounded.css'
 import './assets/Fonts/IRANSans/css/font.scss'
 import Banner from './components/Banner';
@@ -63,13 +64,27 @@ export default {
   },
   created() {
     this.$vuetify.theme.dark = true
-    // #26283b
+    this.getOtherProducts()
   },
   data: () => ({
+    windowSize: { 'x': 1920, 'y': 976 },
     currentProduct: new Product(),
     otherProducts: new ProductList(),
     cart: new Cart()
   }),
+  methods: {
+    async getOtherProducts () {
+      const response = await axios.get('https://alaatv.com/api/v2/product')
+      if (response.status !== 200) {
+        return
+      }
+      this.otherProducts = new ProductList(response.data.data)
+      this.currentProduct = this.otherProducts.list[0]
+    },
+    onResize () {
+      this.windowSize =  { x: window.innerWidth, y: window.innerHeight }
+    },
+  }
 };
 </script>
 

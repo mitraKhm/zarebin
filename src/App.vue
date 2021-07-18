@@ -3,8 +3,11 @@
   <v-app v-resize="onResize">
     <v-app-bar
       app
-      color="primary"
+      color="transparent"
       dark
+      absolute
+      :elevation="0"
+      height="59px"
     >
       <div class="d-flex align-center">
         <v-img
@@ -85,7 +88,6 @@ import OtherProducts from './components/OtherProducts';
 
 export default {
   name: 'App',
-
   components: {
     OtherProducts,
     ProductPrice,
@@ -93,9 +95,24 @@ export default {
     Cart,
     Banner
   },
-
+  created() {
+    this.$vuetify.theme.dark = true
+    // #26283b
+  },
   data: () => ({
     //
   }),
 };
 </script>
+
+<style lang="scss">
+.theme--dark {
+  &.v-application {
+    background: #26283b;
+  }
+  &.v-sheet {
+    background-color: #313249;
+    border-color: #313249;
+  }
+}
+</style>

@@ -20,7 +20,7 @@ export default {
 .cart {
   position: -webkit-sticky;
   position: sticky;
-  top: 75px;
+  top: 5px;
   max-height: calc( 100vh - 86px );
 }
 </style>

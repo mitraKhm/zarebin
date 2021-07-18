@@ -24,23 +24,25 @@
       <v-card-text>
         <v-card-actions class="product-item-box-btn">
           <v-btn
-              text
-              @click="addToCart"
-              icon
+            text
+            icon
+            @click="addToCart"
           >
-           <v-icon>
-             mdi-cart-plus
-           </v-icon>
-<!--            <i class="fi-rr-shopping-cart-add" />-->
+            <v-icon>
+              mdi-cart-plus
+            </v-icon>
+            <!--            <i class="fi-rr-shopping-cart-add" />-->
           </v-btn>
         </v-card-actions>
         <div class="price-info">
           <div class="main-price">
-            {{ product.price.base }}
-<!--          {{ product.price.toman(base) }}-->
+            {{ product.price.toman('base' , false) }}
+            <!--          {{ product.price.toman(base) }}-->
           </div>
-        <div class="final-price">{{ product.price.final }}</div>
-        تومان
+          <div class="final-price">
+            {{ product.price.toman('final' , false) }}
+          </div>
+          تومان
         </div>
       </v-card-text>
     </div>
@@ -146,7 +148,6 @@ export default {
   display: flex;
 }
 .main-price{
-  padding-right: 25px;
   text-decoration: line-through;
   text-decoration-color: red;
 }

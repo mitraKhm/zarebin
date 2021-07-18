@@ -5,7 +5,10 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="px-16">
+      <v-container
+        fluid
+        class="px-16"
+      >
         <v-row>
           <v-col>
             <banner v-if="false" />
@@ -18,8 +21,11 @@
             class="d-flex flex-column"
           >
             <product-info :product="currentProduct" />
-<!--            <product-price :product="currentProduct" />-->
-            <other-products :products="otherProducts" @addToCart="addToCart" />
+            <!--            <product-price :product="currentProduct" />-->
+            <other-products
+              :products="otherProducts"
+              @addToCart="addToCart"
+            />
           </v-col>
           <v-col
             md="3"

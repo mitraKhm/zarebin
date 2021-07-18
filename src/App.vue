@@ -48,18 +48,18 @@
         </v-row>
         <v-row>
           <v-col
-            md="3"
-            cols="12"
-          >
-            <cart />
-          </v-col>
-          <v-col
             md="9"
             cols="12"
           >
             <product-info />
             <product-price />
             <other-products />
+          </v-col>
+          <v-col
+            md="3"
+            cols="12"
+          >
+            <cart />
           </v-col>
         </v-row>
       </v-container>
@@ -75,6 +75,8 @@
 </template>
 
 <script>
+import './assets/Fonts/Flaticons/css/uicons-regular-rounded.css'
+import './assets/Fonts/IRANSans/css/font.scss'
 import Banner from './components/Banner';
 import Cart from './components/Cart';
 import ProductInfo from './components/ProductInfo';

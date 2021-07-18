@@ -4,40 +4,51 @@
     elevation="0"
   >
     <div @click="showInfo">
-      <v-img
-        max-width="200"
+      <img
         :src="product.photo"
         class="product-item-box-image"
-      />
+        alt="img1"
+      >
       <v-card-text class="product-item-box-title">
         {{ product.title }}
       </v-card-text>
     </div>
-    <v-card-actions>
-      <v-btn
-        color="deep-purple lighten-2"
-        text
-        @click="addToCart"
-      >
-        <i class="fi-rr-shopping-cart-add" />
-      </v-btn>
-    </v-card-actions>
     <div class="product-item-box-prices">
-      <v-chip
-        color="#ef5350"
-        class="product-item-box-prices-sheet"
+      <div
+        id="discount"
+        class="box-item discount"
       >
-        30%
-      </v-chip>
+        <span class="discount-span">%{{ Math.round(((product.price.base-product.price.final) /(product.price.base))*100) }} </span>
+      </div>
+
       <v-card-text>
-        {{ product.price.discount }}
-        {{ product.price.final }}
+        <v-card-actions class="product-item-box-btn">
+          <v-btn
+              text
+              @click="addToCart"
+              icon
+          >
+           <v-icon>
+             mdi-cart-plus
+           </v-icon>
+<!--            <i class="fi-rr-shopping-cart-add" />-->
+          </v-btn>
+        </v-card-actions>
+        <div class="price-info">
+          <div class="main-price">
+            {{ product.price.base }}
+<!--          {{ product.price.toman(base) }}-->
+          </div>
+        <div class="final-price">{{ product.price.final }}</div>
+        تومان
+        </div>
       </v-card-text>
     </div>
   </v-card>
 </template>
 <script>
 import {Product} from '@/Models/Product';
+// import Price from '@/Models/Price';
 
 export default {
   name: 'ProductItem',
@@ -74,8 +85,8 @@ export default {
 }
 .product-item-box-image{
   border-radius: 20px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  padding: 10px;
+  width: 100%;
 }
 .v-card__subtitle, .v-card__text, .v-card__title {
   padding: 0 0 0;
@@ -90,10 +101,12 @@ export default {
   letter-spacing: normal;
   text-align: right;
   color: #ffffff;
+  padding-bottom: 25px;
 }
 .product-item-box-prices{
   display: flex;
   align-items: center;
+  padding-bottom: 11px;
 }
 .product-item-box-prices-sheet{
   width: 60px;
@@ -106,5 +119,39 @@ export default {
   border-radius: 25px 0;
   font-size: 14px;
   height: 44px;
+}
+.product-item-box-btn{
+  position: absolute;
+  bottom: -3px;
+  right: 3px;
+}
+.product-item-box .discount {
+  width: 44px;
+  height: 44px;
+  border-radius: 0px 20px 0px 20px;
+  order: -1;
+  position: absolute;
+  background-color: #ef5350;
+  color: white;
+  right: 0;
+  top: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.product-item-box .discount .discount-span{
+  font-size: 14px;
+}
+.price-info{
+  display: flex;
+}
+.main-price{
+  padding-right: 25px;
+  text-decoration: line-through;
+  text-decoration-color: red;
+}
+.final-price{
+  padding-right: 23px;
+  padding-left: 5px;
 }
 </style>

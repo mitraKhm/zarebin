@@ -96,7 +96,7 @@ export default {
     margin-bottom: 20px;
   }
   .cart-item-box{
-    max-height: 600px;
+    max-height: calc( 100vh - 370px );;
     overflow: auto;
   }
   .order-box{

@@ -7,12 +7,12 @@ class Cart extends Model {
         super(data, [
             {key: 'id'},
             {
-                key: 'cart-items',
+                key: 'cartItems',
                 relatedModel: CartItemList,
             },
-            {key: 'profit-value'},
-            {key: 'base-cost'},
-            {key: 'final-price'}
+            {key: 'profitValue'},
+            {key: 'baseCost'},
+            {key: 'finalPrice'}
         ]);
     }
 }

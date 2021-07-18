@@ -1,12 +1,12 @@
 <template>
   <v-card>
-    قیمت محصول
+    آیتم سبد خرید
   </v-card>
 </template>
 
 <script>
 export default {
-  name: 'ProductPrice'
+  name: 'CartItem'
 }
 </script>
 

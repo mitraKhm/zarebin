@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card color="#3a3b55">
     آیتم سبد خرید
   </v-card>
 </template>

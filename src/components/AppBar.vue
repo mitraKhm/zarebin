@@ -7,17 +7,20 @@
     :elevation="0"
     height="59px"
   >
-    <div class="logos">
-      <div class="alaa-logo">
-        <img
-          src="../../src/assets/Asset 1.png"
-          style="width: 30px;"
-        >
-      </div>
-      <div class="school-logo">
-        <img src="../../src/assets/Asset 3.png">
-      </div>
-    </div>
+      <v-row>
+        <v-col class="alaa-logo">
+            <img
+              src="../../src/assets/Asset 1.png"
+              style="width: 30px; margin-right: 100px;"
+            >
+        </v-col>
+        <v-col class="text-right school-logo">
+            <img
+              src="../../src/assets/Asset 3.png"
+              style="width: 116px; margin-right: -67px;"
+            >
+        </v-col>
+      </v-row>
   </v-app-bar>
 </template>
 

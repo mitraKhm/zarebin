@@ -32,8 +32,15 @@
         </v-row>
       </v-col>
     </v-row>
-    <v-row class="pt-10">
-      <v-col>test</v-col>
+    <v-row class="py-10 flex-row justify-space-between">
+      <v-col md="5">
+        <div class="download-description-box under-product-box"></div>
+      </v-col>
+      <v-col md="7">
+        <div class="buy-info-box under-product-box">
+
+        </div>
+      </v-col>
 
 
     </v-row>
@@ -59,6 +66,21 @@ export default {
 </style>
 
 <style>
+.product-info .download-description-box {
+  margin-left: 48px;
+}
+
+.product-info .buy-info-box {
+
+}
+
+.product-info .under-product-box {
+  height: 100px;
+  background: #313249;
+  border-radius: 20px;
+}
+
+
 .product-info .product-image-col {
   border-radius: 40px;
   background: #f7bb41;

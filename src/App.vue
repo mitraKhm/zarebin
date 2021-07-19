@@ -17,7 +17,7 @@
             cols="12"
             class="d-flex flex-column"
           >
-            <product-info :product="currentProduct" />
+            <product-info :product="currentProduct" @addToCart="addToCart" />
             <!--            <product-price :product="currentProduct" />-->
             <product-group
               :products="otherProducts"

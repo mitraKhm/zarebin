@@ -91,6 +91,11 @@ export default {
       type: Product,
       default: new Product()
     }
+  },
+  methods: {
+    addToCart () {
+      this.$emit('addToCart', this.product)
+    }
   }
 }
 </script>

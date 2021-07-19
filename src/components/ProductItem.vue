@@ -73,7 +73,7 @@ export default {
     }
   },
   created() {
-    console.log(this.product)
+    // console.log(this.product)
   }
 }
 </script>

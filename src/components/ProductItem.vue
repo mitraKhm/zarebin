@@ -2,6 +2,7 @@
   <v-card
     class="product-item-box"
     elevation="0"
+    hover
   >
     <div @click="showInfo">
       <img
@@ -18,7 +19,7 @@
         id="discount"
         class="box-item discount"
       >
-        <span class="discount-span">%{{ Math.round(((product.price.base-product.price.final) /(product.price.base))*100) }} </span>
+        <span class="discount-span">{{ Math.round(((product.price.base-product.price.final) /(product.price.base))*100) }}% </span>
       </div>
 
       <v-card-text>

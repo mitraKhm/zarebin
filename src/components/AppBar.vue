@@ -11,7 +11,7 @@
       <v-col class="alaa-logo">
         <img
           src="../../src/assets/Asset 1.png"
-          style="width: 30px; margin-right: 100px;"
+          style="width: 30px; margin-right: 69px;"
         >
       </v-col>
       <v-col class="text-right school-logo">

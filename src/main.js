@@ -15,6 +15,7 @@ const options = {
   draggable: true,
   showCloseButtonOnHover: false,
   hideProgressBar: false,
+  type: 'success'
 };
 
 Vue.use(Toast, options);

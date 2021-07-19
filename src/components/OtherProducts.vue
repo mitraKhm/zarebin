@@ -41,7 +41,7 @@ export default {
   components: {ProductItem},
   methods:{
     addToCart(product){
-      this.$emit('chosenProduct', product)
+      this.$emit('addToCart', product)
     },
     showProductInfo(product){
       this.$emit('showProductInfo', product)

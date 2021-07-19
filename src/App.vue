@@ -5,7 +5,10 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="body">
+      <v-container
+        fluid
+        class="body"
+      >
         <v-row>
           <v-col>
             <banner v-if="false" />
@@ -17,7 +20,10 @@
             cols="12"
             class="d-flex flex-column"
           >
-            <product-info :product="currentProduct" />
+            <product-info
+              :product="currentProduct"
+              @addToCart="addToCart"
+            />
             <!--            <product-price :product="currentProduct" />-->
             <product-group
               :products="otherProducts"
@@ -78,7 +84,13 @@ export default {
     cart: new Cart()
   }),
   methods: {
+    toast (message, type = 'success') {
+      this.$toast(message, {
+        type,
+      })
+    },
     addToCart (product) {
+      this.toast(product.title.concat(' به سبد اضافه شد'))
       this.cart.cartItems.list.push(product)
     },
     changeCurrentProduct (product) {
@@ -113,5 +125,9 @@ export default {
 
 .body {
   padding: 12px 100px;
+}
+
+.Vue-Toastification__toast-body {
+  font-family: IRANSans;
 }
 </style>

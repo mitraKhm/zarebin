@@ -70,6 +70,7 @@
             <v-btn
               height="56px"
               color="#f7bb41"
+              @click="addToCart"
             >
               افزودن به سبد
               <i class="fi-rr-shopping-cart-add relative-top" />
@@ -90,6 +91,11 @@ export default {
     product: {
       type: Product,
       default: new Product()
+    }
+  },
+  methods: {
+    addToCart () {
+      this.$emit('addToCart', this.product)
     }
   }
 }

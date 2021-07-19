@@ -18,8 +18,11 @@
             class="d-flex flex-column"
           >
             <product-info :product="currentProduct" />
-<!--            <product-price :product="currentProduct" />-->
-            <other-products :products="otherProducts" @addToCart="addToCart" />
+            <!--            <product-price :product="currentProduct" />-->
+            <other-products
+              :products="otherProducts"
+              @addToCart="addToCart"
+            />
           </v-col>
           <v-col
             md="4"

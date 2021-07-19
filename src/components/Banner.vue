@@ -1,5 +1,7 @@
 <template>
-  <v-card height="150">
+  <v-card height="150"
+  color="#4e4cb4"
+  >
     بنر
   </v-card>
 </template>

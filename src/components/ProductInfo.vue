@@ -4,9 +4,12 @@
     color="#26283b"
     class="product-info"
   >
-    <v-row >
+    <v-row>
       <v-col class="product-image-col">
-        <v-img :src="product.photo" class="product-image" />
+        <v-img
+          :src="product.photo"
+          class="product-image"
+        />
       </v-col>
       <v-col class="product-info-box">
         <v-row class="product-info-header">
@@ -15,11 +18,11 @@
           </div>
           <div class="product-label">
             <div>
-              <i class="fi-rr-graduation-cap alaa-color relative-top"></i>
+              <i class="fi-rr-graduation-cap alaa-color relative-top" />
               پرویز کازرانیان
             </div>
             <div>
-              <i class="fi-rr-book alaa-color relative-top"></i>
+              <i class="fi-rr-book alaa-color relative-top" />
               رشته تجربی
             </div>
           </div>
@@ -41,8 +44,6 @@
 
         </div>
       </v-col>
-
-
     </v-row>
   </v-card>
 </template>

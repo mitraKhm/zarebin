@@ -45,7 +45,6 @@
           <div class="toman">
             تومان
           </div>
-
         </div>
       </v-card-text>
     </div>
@@ -74,7 +73,7 @@ export default {
     }
   },
   created() {
-    console.log(this.product)
+    // console.log(this.product)
   }
 }
 </script>

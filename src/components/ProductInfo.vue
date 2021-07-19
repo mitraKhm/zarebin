@@ -34,7 +34,15 @@
     </v-row>
     <v-row class="py-10 flex-row justify-space-between">
       <v-col md="5">
-        <div class="download-description-box under-product-box"></div>
+        <div class="download-description-box under-product-box d-flex flex-row justify-space-between">
+          <div class="download-text">
+            <i class="fi-rr-document alaa-color relative-top"></i>
+            دانلود فایل توضیحات کامل دوره
+          </div>
+          <div class="download-btn d-flex justify-center align-center">
+            <i class="fi-rr-download relative-top"></i>
+          </div>
+        </div>
       </v-col>
       <v-col md="7">
         <div class="buy-info-box under-product-box">
@@ -66,8 +74,26 @@ export default {
 </style>
 
 <style>
+.download-description-box .download-text {
+  margin: 33px 33px 33px 0;
+}
+
+.download-description-box .download-btn {
+  width: 56px;
+  height: 56px;
+  margin: 22px 0 22px 22px;
+  background: #3a3b55;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.download-description-box .download-btn:hover {
+  background: #3f405c;
+}
+
 .product-info .download-description-box {
-  margin-left: 48px;
+
 }
 
 .product-info .buy-info-box {
@@ -120,7 +146,7 @@ export default {
 }
 
 .product-info .product-description {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .product-info .product-description p:nth-child(1) {
@@ -134,11 +160,12 @@ export default {
 
 .alaa-color {
   color: #f7bb41;
+  margin-left: 5px;
 }
 
 .relative-top {
   position: relative;
   top: 4px;
-  margin-left: 5px;
+  font-size: 20px;
 }
 </style>

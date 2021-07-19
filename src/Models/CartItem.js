@@ -10,8 +10,12 @@ class CartItem extends Model {
                 key: 'product',
                 relatedModel: Product,
             },
-            {key: 'count'}
+            {
+                key: 'quantity',
+                default: 0
+            }
         ]);
+        this.id = this.product.id
     }
 }
 

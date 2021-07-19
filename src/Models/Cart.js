@@ -1,5 +1,6 @@
 import {Model, Collection} from 'js-abstract-model'
-import {CartItemList} from './CartItem'
+ import {CartItem, CartItemList} from './CartItem'
+import Price from './Price';
 
 class Cart extends Model {
 
@@ -10,10 +11,26 @@ class Cart extends Model {
                 key: 'cartItems',
                 relatedModel: CartItemList,
             },
-            {key: 'profitValue'},
-            {key: 'baseCost'},
-            {key: 'finalPrice'}
+            {
+                key: 'price',
+                relatedModel: Price,
+            },
         ]);
+    }
+    addToCart (product) {
+        if (this.cartItems.list.find(item => item.product.id === product.id)){
+          this.cartItems.list.find(item => item.product.id === product.id).quantity++
+        } else {
+            this.cartItems.list.push(new CartItem({ product }))
+        }
+    }
+    removeItem (cartId) {
+        this.cartItems.list = this.cartItems.list.filter(item => item.id !== cartId)
+    }
+    totalFinalPrice () {
+        let finalPrice = 0
+        this.cartItems.list.forEach(item => finalPrice += item.price.final)
+       return this.finalPrice = finalPrice
     }
 }
 
@@ -22,5 +39,4 @@ class CartList extends Collection {
         return Cart;
     }
 }
-
 export {Cart, CartList};

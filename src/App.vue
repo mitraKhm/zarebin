@@ -5,10 +5,7 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container
-        fluid
-        class="px-16"
-      >
+      <v-container fluid class="body">
         <v-row>
           <v-col>
             <banner v-if="false" />
@@ -16,7 +13,7 @@
         </v-row>
         <v-row>
           <v-col
-            md="9"
+            md="8"
             cols="12"
             class="d-flex flex-column"
           >
@@ -28,7 +25,7 @@
             />
           </v-col>
           <v-col
-            md="3"
+            md="4"
             cols="12"
           >
             <cart-component v-model="cart" />
@@ -107,5 +104,9 @@ export default {
     background-color: #313249;
     border-color: #313249 !important;
   }
+}
+
+.body {
+  padding: 12px 100px;
 }
 </style>

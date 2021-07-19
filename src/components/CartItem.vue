@@ -64,8 +64,14 @@ export default {
     this.cartItemData = this.cartItem
   },
   methods:{
+    toast (message, type = 'error') {
+      this.$toast(message, {
+        type
+      })
+    },
     deleteItem(){
       this.$emit('itemDeleted')
+      this.toast(`${this.cartItemData.product.title} از سبد حذف شد`)
     },
     countDiscount(){
       return  Math.round(((this.cartItemData.product.price.base - this.cartItemData.product.price.final) /(this.cartItemData.product.price.base))*100)
@@ -122,7 +128,7 @@ export default {
     right: 106px;
     width: 47px;
     height: 36px;
-    background-color: red;
+    background-color: #ef5350;
     color: white;
     border-radius: 10px 10px 0 0 !important;
     p{

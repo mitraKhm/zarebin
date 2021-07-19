@@ -45,7 +45,6 @@
           <div class="toman">
             تومان
           </div>
-
         </div>
       </v-card-text>
     </div>

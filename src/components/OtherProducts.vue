@@ -17,7 +17,7 @@
       >
         <product-item
           :product="product"
-          @addToCart="chosenProduct(product)"
+          @addToCart="addToCart(product)"
           @showInfo="showProductInfo(product)"
         />
       </v-col>
@@ -40,7 +40,7 @@ export default {
   },
   components: {ProductItem},
   methods:{
-    chosenProduct(product){
+    addToCart(product){
       this.$emit('chosenProduct', product)
     },
     showProductInfo(product){

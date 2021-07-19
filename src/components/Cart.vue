@@ -1,33 +1,33 @@
 <template>
   <v-card
-    class="cart"
-    color="#313249"
-    dark
+      class="cart"
+      color="#313249"
+      dark
   >
     <p class="title">
       سبد خرید
     </p>
     <div class="cart-item-box">
       <cart-item
-        v-for="item in cart.cartItems.list"
-        :key="item.id"
-        :cart-item="item"
-        class="cart-item mx-7"
-        @itemDeleted="removeItem(item.id)"
+          v-for="item in cart.cartItems.list"
+          :key="item.id"
+          :cart-item="item"
+          class="cart-item mx-7"
+          @itemDeleted="removeItem(item.id)"
       />
     </div>
     <v-card
-      flat
-      color="#3a3b55"
-      class="order-box"
+        flat
+        color="#3a3b55"
+        class="order-box"
     >
       <div class="mr-9 mb-7 pa-3">
         <div class="d-flex mb-7">
           <span class="ml-8">
-            <!--            مبلغ خام : {{ totalPrice }}-->
+            مبلغ خام : {{ cart.price.base }}
           </span>
           <span>
-            <!--            میزان تخفیف : {{ totalDiscount }}-->
+          میزان تخفیف : {{ cart.price.discount }}
           </span>
         </div>
         <div>
@@ -35,32 +35,32 @@
             مبلغ نهایی و قابل پرداخت:
           </span>
           <span>
-            <!--            {{ cart.totalFinalPrice }} تومان-->
+            {{ cart.price.final }} تومان
           </span>
         </div>
       </div>
       <v-row justify="center">
         <v-col cols="9">
           <v-btn
-            depressed
-            color="#4caf50"
-            height="60"
-            width="100%"
-            class="submit-btn"
+              depressed
+              color="#4caf50"
+              height="60"
+              width="100%"
+              class="submit-btn"
           >
             ادامه و ثبت سفارش
           </v-btn>
         </v-col>
         <v-col cols="3 text-center">
           <v-btn
-            depressed
-            color="#484967"
-            height="60"
-            class="delete-btn align-center justify-center"
+              depressed
+              color="#484967"
+              height="60"
+              class="delete-btn align-center justify-center"
           >
             <i
-              class="fi-rr-trash"
-              @click="deleteList"
+                class="fi-rr-trash"
+                @click="deleteList"
             />
           </v-btn>
         </v-col>
@@ -90,32 +90,14 @@ export default {
   created() {
     this.cart = this.value
   },
-  computed: {
-    // totalDiscount() {
-    //   let  discount = 0
-    //   this.cart.cartItems.list.forEach(item => discount += item.price.discount)
-    //   return discount
-    // },
-    // totalPrice() {
-    //   let  price = 0
-    //   this.cart.cartItems.list.forEach(item => price += item.price.base)
-    //   return price
-    //
-    // },
-
-    // totalPrice2(i) {
-    //   let  total = 0
-    //   this.cart.cartItems.list.forEach(item => total  += item.price.i)
-    //   return total
-    // }
-  },
+  computed: {},
   methods: {
     removeItem(cartId) {
       this.cart.removeItem(cartId)
     },
-    deleteList(){
+    deleteList() {
       this.cart.cartItems.list = []
-      
+
     }
   }
 }

@@ -5,7 +5,7 @@
     color="#26283b"
   >
     <v-card-text class="other-products-box-title">
-      محصولات دیگر
+      {{ title }}
     </v-card-text>
     <v-row>
       <v-col
@@ -35,6 +35,12 @@ export default {
       type: ProductList,
       default(){
         return new ProductList()
+      }
+    },
+    title:{
+      type: String,
+      default() {
+        return 'محصولات دیگر';
       }
     }
   },

@@ -5,7 +5,10 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid class="body">
+      <v-container
+        fluid
+        class="body"
+      >
         <v-row>
           <v-col>
             <banner v-if="false" />
@@ -17,11 +20,15 @@
             cols="12"
             class="d-flex flex-column"
           >
-            <product-info :product="currentProduct" />
+            <product-info
+              :product="currentProduct"
+              @addToCart="addToCart"
+            />
             <!--            <product-price :product="currentProduct" />-->
-            <other-products
+            <product-group
               :products="otherProducts"
               @addToCart="addToCart"
+              @showProductInfo="changeCurrentProduct"
             />
           </v-col>
           <v-col
@@ -51,16 +58,16 @@ import Banner from './components/Banner';
 import CartComponent from './components/Cart';
 import ProductInfo from './components/ProductInfo';
 // import ProductPrice from './components/ProductPrice';
-import OtherProducts from './components/OtherProducts';
 import {Product, ProductList} from './Models/Product';
 import {Cart} from './Models/Cart';
 import AppBar from './components/AppBar';
+import ProductGroup from './components/ProductGroup';
 
 export default {
   name: 'App',
   components: {
+    ProductGroup,
     AppBar,
-    OtherProducts,
     // ProductPrice,
     ProductInfo,
     CartComponent,
@@ -77,8 +84,18 @@ export default {
     cart: new Cart()
   }),
   methods: {
+    toast (message, type = 'success') {
+      this.$toast(message, {
+        type
+      })
+    },
     addToCart (product) {
+      this.toast(product.title.concat(' به سبد اضافه شد'))
       this.cart.cartItems.list.push(product)
+    },
+    changeCurrentProduct (product) {
+      console.log('test')
+      this.currentProduct = product
     },
     async getOtherProducts () {
       const response = await axios.get('https://alaatv.com/api/v2/product')
@@ -108,5 +125,9 @@ export default {
 
 .body {
   padding: 12px 100px;
+}
+
+.Vue-Toastification__toast-body {
+  font-family: IRANSans;
 }
 </style>

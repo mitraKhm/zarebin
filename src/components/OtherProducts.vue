@@ -5,7 +5,10 @@
     color="#26283b"
   >
     <v-card-text class="other-products-box-title">
-      محصولات دیگر
+      <div class="product-line" />
+      <div class="product-series-title">
+        {{ title }}
+      </div>
     </v-card-text>
     <v-row>
       <v-col
@@ -16,6 +19,7 @@
         cols="12"
       >
         <product-item
+          v-ripple
           :product="product"
           @addToCart="addToCart(product)"
           @showInfo="showProductInfo(product)"
@@ -35,6 +39,12 @@ export default {
       type: ProductList,
       default(){
         return new ProductList()
+      }
+    },
+    title:{
+      type: String,
+      default() {
+        return 'محصولات دیگر';
       }
     }
   },
@@ -56,6 +66,10 @@ export default {
 <style>
 .other-products-box .theme--light.v-sheet {
   background-color: #26283b;
+
+}
+.other-products-box{
+  margin-bottom: 60px;
 }
 .other-products-box-title{
   font-size: 20px;
@@ -66,6 +80,8 @@ export default {
   letter-spacing: normal;
   text-align: right;
   color: #ffffff;
+  display: flex;
+  align-items: center;
 }
 .v-card__subtitle, .v-card__text, .v-card__title .other-products-box{
   padding: 0 0 20px;
@@ -76,5 +92,14 @@ export default {
 }
 .theme--dark.v-card > .v-card__text, .theme--dark.v-card > .v-card__subtitle .other-products-box-title{
   color: #ffffff;
+}
+.product-line{
+  color: #f7bb41;
+  width: 10px;
+  border-bottom: solid 4px #f7bb41;
+  border-radius: 7px;
+  height: 0;
+  margin-left: 10px;
+  margin-bottom: -1px;
 }
 </style>

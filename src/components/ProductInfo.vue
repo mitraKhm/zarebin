@@ -37,11 +37,45 @@
     </v-row>
     <v-row class="py-10 flex-row justify-space-between">
       <v-col md="5">
-        <div class="download-description-box under-product-box"></div>
+        <div class="download-description-box under-product-box d-flex flex-row justify-space-between">
+          <div class="download-text">
+            <i class="fi-rr-document alaa-color relative-top" />
+            دانلود فایل توضیحات کامل دوره
+          </div>
+
+          <v-btn
+            icon
+            tile
+            class="download-btn"
+          >
+            <i class="fi-rr-download relative-top" />
+          </v-btn>
+
+        </div>
       </v-col>
       <v-col md="7">
         <div class="buy-info-box under-product-box">
-
+          <div class="discount-info">
+            <div class="discount">
+              ۳۵٪ <span>تخفیف</span>
+            </div>
+            <div class="original-price">
+              1,500,000
+            </div>
+          </div>
+          <div class="final-price">
+            1,020,000 <span>تومان</span>
+          </div>
+          <div class="add-to-cart">
+            <v-btn
+              height="56px"
+              color="#f7bb41"
+              @click="addToCart"
+            >
+              افزودن به سبد
+              <i class="fi-rr-shopping-cart-add relative-top" />
+            </v-btn>
+          </div>
         </div>
       </v-col>
     </v-row>
@@ -58,6 +92,11 @@ export default {
       type: Product,
       default: new Product()
     }
+  },
+  methods: {
+    addToCart () {
+      this.$emit('addToCart', this.product)
+    }
   }
 }
 </script>
@@ -67,8 +106,102 @@ export default {
 </style>
 
 <style>
+.buy-info-box .add-to-cart .v-btn .v-btn__content {
+  flex-direction: row;
+  justify-content: space-around;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.buy-info-box .add-to-cart .v-btn {
+  border-radius: 15px;
+}
+
+.buy-info-box .add-to-cart {
+  width: 240px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 22px;
+}
+
+.buy-info-box .final-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+}
+
+.buy-info-box .final-price span {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.buy-info-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.buy-info-box .discount-info .original-price {
+  font-size: 18px;
+  text-decoration: line-through #ef5350;
+  padding-bottom: 8px;
+
+}
+
+.buy-info-box .discount-info {
+  margin-right: 65px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-weight: 500;
+  width: max-content;
+}
+
+.buy-info-box .discount-info .discount {
+  width: 70px;
+  height: 56px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  background: #ef5350;
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  line-height: 20px;
+}
+
+.buy-info-box .discount-info .discount span {
+  font-size: 14px;
+}
+
+.download-description-box .download-text {
+  margin: 33px 33px 33px 0;
+}
+
+.download-description-box .download-btn {
+  width: 56px;
+  height: 56px;
+  margin: 22px 0 22px 22px;
+  background: #3a3b55;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.download-description-box .download-btn i {
+  left: 1px;
+}
+
 .product-info .download-description-box {
-  margin-left: 48px;
+
 }
 
 .product-info .buy-info-box {
@@ -121,7 +254,7 @@ export default {
 }
 
 .product-info .product-description {
-  padding-top: 30px;
+  padding-top: 20px;
 }
 
 .product-info .product-description p:nth-child(1) {
@@ -135,11 +268,12 @@ export default {
 
 .alaa-color {
   color: #f7bb41;
+  margin-left: 5px;
 }
 
 .relative-top {
   position: relative;
-  top: 4px;
-  margin-left: 5px;
+  top: 5px;
+  font-size: 20px;
 }
 </style>

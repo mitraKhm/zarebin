@@ -148,16 +148,17 @@ export default {
 }
 .price-info{
   display: flex;
-  padding-right: 123px;
+  padding-right: 39px;
 }
 .main-price{
   text-decoration: line-through;
   text-decoration-color: red;
   font-size: 12px;
   font-weight: 500;
+  padding-left: 10px;
 }
 .final-price{
-  padding-right: 23px;
+  padding-right: 10px;
   padding-left: 5px;
   font-size: 16px;
   font-weight: 500;

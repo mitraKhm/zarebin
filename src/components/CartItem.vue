@@ -49,7 +49,9 @@ export default {
   props:{
     value :{
       type:CartItem,
-      default:new CartItem()
+      default(){
+        return new CartItem()
+      }
     }
   },
   data(){

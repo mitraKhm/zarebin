@@ -19,9 +19,10 @@
           >
             <product-info :product="currentProduct" />
             <!--            <product-price :product="currentProduct" />-->
-            <other-products
+            <product-group
               :products="otherProducts"
               @addToCart="addToCart"
+              @showProductInfo="changeCurrentProduct"
             />
           </v-col>
           <v-col
@@ -51,16 +52,16 @@ import Banner from './components/Banner';
 import CartComponent from './components/Cart';
 import ProductInfo from './components/ProductInfo';
 // import ProductPrice from './components/ProductPrice';
-import OtherProducts from './components/OtherProducts';
 import {Product, ProductList} from './Models/Product';
 import {Cart} from './Models/Cart';
 import AppBar from './components/AppBar';
+import ProductGroup from './components/ProductGroup';
 
 export default {
   name: 'App',
   components: {
+    ProductGroup,
     AppBar,
-    OtherProducts,
     // ProductPrice,
     ProductInfo,
     CartComponent,
@@ -79,6 +80,10 @@ export default {
   methods: {
     addToCart (product) {
       this.cart.cartItems.list.push(product)
+    },
+    changeCurrentProduct (product) {
+      console.log('test')
+      this.currentProduct = product
     },
     async getOtherProducts () {
       const response = await axios.get('https://alaatv.com/api/v2/product')

@@ -28,16 +28,12 @@
             icon
             @click="addToCart"
           >
-            <v-icon>
-              mdi-cart-plus
-            </v-icon>
-            <!--            <i class="fi-rr-shopping-cart-add" />-->
+            <i class="fi-rr-shopping-cart-add add-to-cart" />
           </v-btn>
         </v-card-actions>
         <div class="price-info">
           <div class="main-price">
             {{ product.price.toman('base' , false) }}
-            <!--          {{ product.price.toman(base) }}-->
           </div>
           <div class="final-price">
             {{ product.price.toman('final' , false) }}
@@ -45,7 +41,6 @@
           <div class="toman">
             تومان
           </div>
-
         </div>
       </v-card-text>
     </div>
@@ -74,7 +69,7 @@ export default {
     }
   },
   created() {
-    console.log(this.product)
+    // console.log(this.product)
   }
 }
 </script>
@@ -149,16 +144,17 @@ export default {
 }
 .price-info{
   display: flex;
-  padding-right: 123px;
+  padding-right: 39px;
 }
 .main-price{
   text-decoration: line-through;
   text-decoration-color: red;
   font-size: 12px;
   font-weight: 500;
+  padding-left: 10px;
 }
 .final-price{
-  padding-right: 23px;
+  padding-right: 10px;
   padding-left: 5px;
   font-size: 16px;
   font-weight: 500;
@@ -166,5 +162,10 @@ export default {
 .toman{
   font-size: 12px;
   font-weight: 500;
+}
+.add-to-cart{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 3px;
 }
 </style>

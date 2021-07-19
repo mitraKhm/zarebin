@@ -86,7 +86,7 @@ export default {
   methods: {
     toast (message, type = 'success') {
       this.$toast(message, {
-        type,
+        type
       })
     },
     addToCart (product) {

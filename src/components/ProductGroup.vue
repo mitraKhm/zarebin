@@ -8,7 +8,7 @@
       :title="item.title"
       :products="item"
       @addToCart="addToCart"
-      @showInfo="showProductInfo"
+      @showProductInfo="showProductInfo"
     />
   </div>
 </template>
@@ -48,6 +48,7 @@ export default {
       this.$emit('addToCart', product)
     },
     showProductInfo(product){
+      console.log( product)
       this.$emit('showProductInfo', product)
     }
   }

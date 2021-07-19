@@ -19,6 +19,7 @@
         cols="12"
       >
         <product-item
+          v-ripple
           :product="product"
           @addToCart="addToCart(product)"
           @showInfo="showProductInfo(product)"

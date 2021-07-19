@@ -28,16 +28,12 @@
             icon
             @click="addToCart"
           >
-            <v-icon>
-              mdi-cart-plus
-            </v-icon>
-            <!--            <i class="fi-rr-shopping-cart-add" />-->
+            <i class="fi-rr-shopping-cart-add add-to-cart" />
           </v-btn>
         </v-card-actions>
         <div class="price-info">
           <div class="main-price">
             {{ product.price.toman('base' , false) }}
-            <!--          {{ product.price.toman(base) }}-->
           </div>
           <div class="final-price">
             {{ product.price.toman('final' , false) }}
@@ -166,5 +162,10 @@ export default {
 .toman{
   font-size: 12px;
   font-weight: 500;
+}
+.add-to-cart{
+  font-size: 20px;
+  margin-top: 10px;
+  margin-left: 3px;
 }
 </style>

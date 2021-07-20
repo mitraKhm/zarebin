@@ -19,10 +19,12 @@ class Cart extends Model {
     }
     addToCart (product) {
         if (this.cartItems.list.find(item => item.product.id === product.id)){
-         if(false){
+
+            // eslint-disable-next-line no-constant-condition
+         if(1===2){
              this.cartItems.list.find(item => item.product.id === product.id).quantity++
          }
-            this.totalFinalPrice ()
+            this.tyarnotalFinalPrice ()
             this.totalDiscount ()
             this.totalBasePrice ()
         } else {
@@ -33,6 +35,8 @@ class Cart extends Model {
         }
     }
     removeItem (cartId) {
+     let item = this.cartItems.list.find(item => item.product.id === cartId)
+        console.log(item.quantity)
         this.cartItems.list = this.cartItems.list.filter(item => item.id !== cartId)
     }
     totalFinalPrice () {

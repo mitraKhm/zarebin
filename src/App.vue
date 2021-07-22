@@ -90,8 +90,9 @@ export default {
       })
     },
     addToCart (product) {
+      this.cart.addToCart(product)
       this.toast(product.title.concat(' به سبد اضافه شد'))
-      this.cart.cartItems.list.push(product)
+      // this.cart.cartItems.list.push(product)
     },
     changeCurrentProduct (product) {
       console.log('test')

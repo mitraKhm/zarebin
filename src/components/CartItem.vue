@@ -8,34 +8,35 @@
     <div class="d-flex justify-space-between">
       <div class="img-box">
         <v-img
-          src="../assets/test_img.jpg"
+          :src="cartItemData.product.photo"
           class="img"
         />
       </div>
       <div class="d-flex flex-column detail">
         <p class="detail-title">
-          پک اختصاصی راه
+          {{ cartItemData.product.title }}
         </p>
         <div class="price-box mt-auto">
           <div class="d-flex prices align-center justify-endt">
             <p class="base-price ml-3">
-              1,500,000
+              {{ cartItem.product.price.toman('base' , false) }}
             </p>
             <p class="final-price text-left">
-              1,050,000 تومان
+              {{ cartItemData.product.price.toman('final') }}
             </p>
           </div>
         </div>
       </div>
       <div class="d-flex justify-center align-center delete">
-        <v-icon color="white">
-          mdi-delete-outline
-        </v-icon>
+        <i
+          class="fi fi-rr-trash trash-icon"
+          @click="deleteItem"
+        />
       </div>
     </div>
     <div class="d-flex justify-center align-center discount">
       <p>
-        25%
+        {{ countDiscount() }}%
       </p>
     </div>
   </v-card>
@@ -45,20 +46,36 @@
 import {CartItem} from '../Models/CartItem';
 
 export default {
-  name: 'CartItem',
-  props:{
-    value :{
-      type:CartItem,
-      default:new CartItem()
+  name: 'CartItemProduct',
+  props: {
+    cartItem: {
+      type: CartItem,
+      default(){
+        return new CartItem()
+      }
     }
   },
   data(){
     return {
-      cartItem:[]
+     cartItemData: new CartItem()
     }
   },
   created() {
-    this.cartItem = this.value
+    this.cartItemData = this.cartItem
+  },
+  methods:{
+    toast (message, type = 'error') {
+      this.$toast(message, {
+        type
+      })
+    },
+    deleteItem(){
+      this.$emit('itemDeleted')
+      this.toast(`${this.cartItemData.product.title} از سبد حذف شد`)
+    },
+    countDiscount(){
+      return  Math.round(((this.cartItemData.product.price.base - this.cartItemData.product.price.final) /(this.cartItemData.product.price.base))*100)
+    }
   }
 }
 
@@ -71,7 +88,6 @@ export default {
 .cart-item {
   border-radius: 20px;
   padding: 10px;
-
   .img-box {
     width: 80px;
     height: 80px;
@@ -101,6 +117,10 @@ export default {
   }
   .delete {
     padding: 0 20px;
+    .trash-icon{
+      cursor: pointer;
+    font-size: 20px;
+  }
   }
   .discount {
     position: absolute;
@@ -108,9 +128,12 @@ export default {
     right: 106px;
     width: 47px;
     height: 36px;
-    background-color: red;
+    background-color: #ef5350;
     color: white;
     border-radius: 10px 10px 0 0 !important;
+    p{
+      font-size: 12px;
+    }
   }
 }
 </style>

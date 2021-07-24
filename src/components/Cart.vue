@@ -9,7 +9,10 @@
       سبد خرید
     </p>
     <div :class="{ 'cart-item-box': true, 'empty': cart.isEmpty() }">
-      <transition-group name="list" tag="p">
+      <transition-group
+        name="list"
+        tag="p"
+      >
         <cart-item
           v-for="item in cart.cartItems.list"
           :key="item.id"
@@ -19,7 +22,10 @@
         />
       </transition-group>
       <transition name="fade">
-        <div v-if="cart.isEmpty()" class="empty-cart-box">
+        <div
+          v-if="cart.isEmpty()"
+          class="empty-cart-box"
+        >
           <v-img src="https://node3.alaatv.com/upload/zarebin_empty_cart.png" />
         </div>
       </transition>
@@ -53,8 +59,14 @@
           </span>
         </div>
       </div>
-      <v-row justify="center" class="mx-xl-9 mx-lg-2">
-        <v-col xl="10" cols="9">
+      <v-row
+        justify="center"
+        class="mx-xl-9 mx-lg-2"
+      >
+        <v-col
+          xl="10"
+          cols="9"
+        >
           <v-btn
             :disabled="cart.isEmpty()"
             depressed
@@ -66,7 +78,10 @@
             ادامه و ثبت سفارش
           </v-btn>
         </v-col>
-        <v-col xl="2" cols="3 text-end">
+        <v-col
+          xl="2"
+          cols="3 text-end"
+        >
           <v-btn
             depressed
             color="#484967"
@@ -119,13 +134,13 @@ export default {
   },
   computed: {
     cartFinalAnimated () {
-      return parseInt(this.cartFinal.toFixed(0)).toLocaleString('fa')
+      return this.currencyFormat(this.cartFinal)
     },
     cartBaseAnimated () {
-      return parseInt(this.cartBase.toFixed(0)).toLocaleString('fa')
+      return this.currencyFormat(this.cartBase)
     },
     cartDiscountAnimated () {
-      return parseInt(this.cartDiscount.toFixed(0)).toLocaleString('fa')
+      return this.currencyFormat(this.cartDiscount)
     },
   },
   created() {
@@ -135,6 +150,12 @@ export default {
     this.cartDiscount = this.cart.price.discount
   },
   methods: {
+    currencyFormat (value) {
+      if (!value) {
+        return 0
+      }
+      return parseInt(value.toFixed(0)).toLocaleString('fa')
+    },
     removeItem(cartId) {
       this.cart.removeItem(cartId)
     },

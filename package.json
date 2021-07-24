@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "js-abstract-model": "^0.1.27",
     "vue": "^2.6.11",
+    "vue-cookies": "^1.7.4",
     "vuetify": "^2.4.0"
   },
   "devDependencies": {

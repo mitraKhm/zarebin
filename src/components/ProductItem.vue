@@ -93,7 +93,7 @@ export default {
   padding: 0 0 0;
 }
 .product-item-box-title{
-  padding-right: 10px;
+  padding-right: 12px;
   font-size: 16px;
   font-weight: normal;
   font-stretch: normal;

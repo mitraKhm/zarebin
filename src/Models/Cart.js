@@ -19,30 +19,35 @@ class Cart extends Model {
     }
     addToCart (product) {
         if (this.cartItems.list.find(item => item.product.id === product.id)){
-
-            // eslint-disable-next-line no-constant-condition
-         if(1===2){
-             this.cartItems.list.find(item => item.product.id === product.id).quantity++
-         }
-            this.tyarnotalFinalPrice ()
-            this.totalDiscount ()
-            this.totalBasePrice ()
+             // ToDo
+             // if (canIncreaseQuantity) {
+             //     this.cartItems.list.find(item => item.product.id === product.id).quantity++
+             // }
         } else {
             this.cartItems.list.push(new CartItem({ product }))
-            this.totalFinalPrice ()
-            this.totalDiscount ()
-            this.totalBasePrice ()
         }
+        this.totalFinalPrice()
+        this.totalDiscount()
+        this.totalBasePrice()
+        return this.cartItems.list.find(item => item.product.id === product.id).quantity
     }
     removeItem (cartId) {
-     let item = this.cartItems.list.find(item => item.product.id === cartId)
-        console.log(item.quantity)
         this.cartItems.list = this.cartItems.list.filter(item => item.id !== cartId)
+        this.totalFinalPrice()
+        this.totalDiscount()
+        this.totalBasePrice()
+    }
+    removeAllItems () {
+        this.cartItems.list = []
+        this.totalFinalPrice()
+        this.totalDiscount()
+        this.totalBasePrice()
     }
     totalFinalPrice () {
         let finalPrice = 0
          this.cartItems.list.forEach(item => {
             finalPrice += item.product.price.final
+             console.log(item.product)
          })
         this.price.final = finalPrice
     }
@@ -51,14 +56,17 @@ class Cart extends Model {
         this.cartItems.list.forEach(item => {
             basePrice += item.product.price.base
         })
-        this.price.final = basePrice
+        this.price.base = basePrice
     }
     totalDiscount () {
         let totalDiscount = 0
         this.cartItems.list.forEach(item => {
             totalDiscount  += item.product.price.discount
         })
-        this.price.final = totalDiscount
+        this.price.discount = totalDiscount
+    }
+    isEmpty () {
+        return !this.cartItems.list.length
     }
 }
 

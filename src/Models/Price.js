@@ -5,9 +5,18 @@ class Price extends Model {
     constructor(data) {
         super(data, [
             {key: 'extraCost'},
-            {key: 'base'},
-            {key: 'discount'},
-            {key: 'final'},
+            {
+                key: 'base',
+                default: 0
+            },
+            {
+                key: 'discount',
+                default: 0
+            },
+            {
+                key: 'final',
+                default: 0
+            },
             {key: 'discountDetail'},
         ]);
     }

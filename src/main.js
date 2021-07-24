@@ -8,7 +8,7 @@ Vue.config.productionTip = false
 
 const options = {
   position: 'top-right',
-  timeout: 4000,
+  timeout: 5000,
   closeOnClick: false,
   pauseOnFocusLoss: true,
   pauseOnHover: false,

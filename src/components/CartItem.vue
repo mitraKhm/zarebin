@@ -64,7 +64,7 @@ export default {
     this.cartItemData = this.cartItem
   },
   methods:{
-    toast (message, type = 'error') {
+    toast (message, type = 'success') {
       this.$toast(message, {
         type
       })
@@ -103,7 +103,8 @@ export default {
     }
     .price-box{
       .prices{
-        justify-content: end;
+        justify-content: center;
+        padding-right: 40px;
         .final-price{
           font-size: 16px;
         }
@@ -134,6 +135,23 @@ export default {
     p{
       font-size: 12px;
     }
+  }
+}
+</style>
+
+<style>
+@media only screen and (max-width: 1904px) {
+  .cart .cart-item .delete {
+    padding: 0 14px;
+  }
+
+  .cart .cart-item .img-box {
+    width: 60px;
+    height: 60px;
+  }
+
+  .cart .cart-item .discount {
+    right: 84px;
   }
 }
 </style>

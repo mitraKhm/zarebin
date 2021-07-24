@@ -7,36 +7,20 @@
     :elevation="0"
     height="59px"
   >
-    <div class="d-flex align-center">
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-        transition="scale-transition"
-        width="40"
-      />
-
-      <v-img
-        alt="Vuetify Name"
-        class="shrink mt-1 hidden-sm-and-down"
-        contain
-        min-width="100"
-        src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-        width="100"
-      />
-    </div>
-
-    <v-spacer />
-
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      text
-    >
-      <span class="mr-2">Latest Release</span>
-      <v-icon>mdi-open-in-new</v-icon>
-    </v-btn>
+    <v-row>
+      <v-col class="alaa-logo">
+        <img
+          src="../../src/assets/Asset 1.png"
+          style="width: 30px; margin-right: 69px;"
+        >
+      </v-col>
+      <v-col class="text-right school-logo">
+        <img
+          src="../../src/assets/Asset 3.png"
+          style="width: 116px; margin-right: -67px;"
+        >
+      </v-col>
+    </v-row>
   </v-app-bar>
 </template>
 
@@ -47,5 +31,14 @@ name: 'AppBar'
 </script>
 
 <style scoped>
+.logos{
+  display: flex;
+  align-items: center;
+}
+.alaa-logo{
+  width: 25%;
+}
+.school-logo{
 
+}
 </style>

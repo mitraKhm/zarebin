@@ -5,23 +5,34 @@
     <!-- Sizes your content based upon application components -->
     <v-main>
       <!-- Provides the application the proper gutter -->
-      <v-container fluid>
+      <v-container
+        fluid
+        class="body"
+      >
         <v-row>
           <v-col>
-            <banner />
+            <banner v-if="false" />
           </v-col>
         </v-row>
         <v-row>
           <v-col
-            md="9"
+            lg="8"
             cols="12"
+            class="d-flex flex-column"
           >
-            <product-info :product="currentProduct" />
-            <product-price :product="currentProduct" />
-            <other-products :products="otherProducts" />
+            <product-info
+              :product="currentProduct"
+              @addToCart="addToCart"
+            />
+            <!--            <product-price :product="currentProduct" />-->
+            <product-group
+              :products="otherProducts"
+              @addToCart="addToCart"
+              @showProductInfo="changeCurrentProduct"
+            />
           </v-col>
           <v-col
-            md="3"
+            lg="4"
             cols="12"
           >
             <cart-component v-model="cart" />
@@ -46,18 +57,18 @@ import './assets/Fonts/IRANSans/css/font.scss'
 import Banner from './components/Banner';
 import CartComponent from './components/Cart';
 import ProductInfo from './components/ProductInfo';
-import ProductPrice from './components/ProductPrice';
-import OtherProducts from './components/OtherProducts';
+// import ProductPrice from './components/ProductPrice';
 import {Product, ProductList} from './Models/Product';
 import {Cart} from './Models/Cart';
 import AppBar from './components/AppBar';
+import ProductGroup from './components/ProductGroup';
 
 export default {
   name: 'App',
   components: {
+    ProductGroup,
     AppBar,
-    OtherProducts,
-    ProductPrice,
+    // ProductPrice,
     ProductInfo,
     CartComponent,
     Banner
@@ -73,6 +84,24 @@ export default {
     cart: new Cart()
   }),
   methods: {
+    toast (message, type = 'success') {
+      this.$toast(message, {
+        type
+      })
+    },
+    addToCart (product) {
+      const quantity = this.cart.addToCart(product)
+      if (quantity) {
+        this.toast(product.title.concat(' به سبد اضافه شد. تعداد در سبد: ' + quantity))
+      } else {
+        this.toast(product.title.concat(' به سبد اضافه نشد'), 'error')
+      }
+      // this.cart.cartItems.list.push(product)
+    },
+    changeCurrentProduct (product) {
+      console.log('test')
+      this.currentProduct = product
+    },
     async getOtherProducts () {
       const response = await axios.get('https://alaatv.com/api/v2/product')
       if (response.status !== 200) {
@@ -91,11 +120,26 @@ export default {
 <style lang="scss">
 .theme--dark {
   &.v-application {
-    background: #26283b;
+    background: #26283b !important;
   }
   &.v-sheet {
     background-color: #313249;
-    border-color: #313249;
+    border-color: #313249 !important;
+  }
+}
+
+.Vue-Toastification__toast-body {
+  font-family: IRANSans;
+}
+
+@media only screen and (min-width: 1904px) {
+  .body {
+    padding: 12px 100px;
+  }
+}
+@media only screen and (max-width: 1264px) {
+  .body {
+    padding: 12px 16px;
   }
 }
 </style>

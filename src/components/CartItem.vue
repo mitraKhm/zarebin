@@ -22,7 +22,7 @@
               {{ cartItem.product.price.toman('base' , false) }}
             </p>
             <p class="final-price text-left">
-              {{ cartItemData.product.price.toman('final') }}
+              {{ cartItem.product.price.toman('final') ? cartItem.product.price.toman('final') : '۰ تومان' }}
             </p>
           </div>
         </div>

@@ -21,6 +21,7 @@
       <transition name="fade">
         <div v-if="cart.isEmpty()" class="empty-cart-box">
           <v-img src="https://node3.alaatv.com/upload/zarebin_empty_cart.png" />
+          <p>شما محصولی را انتخاب نکرده اید</p>
         </div>
       </transition>
     </div>
@@ -68,6 +69,7 @@
         </v-col>
         <v-col xl="2" cols="3 text-end">
           <v-btn
+            :disabled="cart.isEmpty()"
             depressed
             color="#484967"
             height="60"
@@ -227,6 +229,12 @@ export default {
 .empty-cart-box {
   position: absolute;
   top:100px;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -234,6 +242,14 @@ export default {
 }
 .fade-enter, .fade-leave-to {
   opacity: 0;
+}
+
+.empty-cart-box .v-image {
+  margin-right: 26px;
+}
+
+.empty-cart-box p {
+  margin-top: 40px;
 }
 
 </style>

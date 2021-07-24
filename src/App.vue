@@ -89,7 +89,21 @@ export default {
         type
       })
     },
+    setCartInCookie (cart) {
+      const cookieCart = cart.cartItems.list.map( item => {
+        return {
+          product_id: item.product.id,
+          attribute: [],
+          extraAttribute: [],
+          products: []
+        }
+      })
+
+      this.$cookies.set('cartItems',JSON.stringify(cookieCart))
+      // console.log('ddd', JSON.parse(this.$cookies.get('cartItems')))
+    },
     addToCart (product) {
+
       const quantity = this.cart.addToCart(product)
       if (quantity) {
         this.toast(product.title.concat(' به سبد اضافه شد. تعداد در سبد: ' + quantity))
@@ -97,6 +111,8 @@ export default {
         this.toast(product.title.concat(' به سبد اضافه نشد'), 'error')
       }
       // this.cart.cartItems.list.push(product)
+
+      this.setCartInCookie(this.cart)
     },
     changeCurrentProduct (product) {
       console.log('test')

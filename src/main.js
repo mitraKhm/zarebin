@@ -3,6 +3,8 @@ import App from './App.vue'
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
 import vuetify from './plugins/vuetify'
+import VueCookies from 'vue-cookies'
+Vue.use(VueCookies)
 
 Vue.config.productionTip = false
 

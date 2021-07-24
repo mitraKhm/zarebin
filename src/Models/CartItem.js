@@ -12,7 +12,7 @@ class CartItem extends Model {
             },
             {
                 key: 'quantity',
-                default: 0
+                default: 1
             }
         ]);
         this.id = this.product.id

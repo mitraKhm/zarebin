@@ -14,8 +14,8 @@
       <v-col
         v-for="(product,index) in products.list"
         :key="index"
-        md="3"
-        sm="6"
+        xl="3"
+        lg="4"
         cols="12"
       >
         <product-item

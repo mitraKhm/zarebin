@@ -5,37 +5,42 @@
     class="product-info"
   >
     <v-row>
-      <v-col class="product-image-col">
-        <v-img
-          :src="product.photo"
-          class="product-image"
-        />
+      <v-col>
+        <div class="product-image-col">
+          <v-img
+            :src="product.photo"
+              class="product-image"
+          />
+        </div>
       </v-col>
       <v-col class="product-info-box">
         <v-row class="product-info-header">
-          <div class="product-title">
-            {{ product.title }}
-          </div>
-          <div class="product-label">
-            <div>
-              <i class="fi-rr-graduation-cap alaa-color relative-top" />
-              پرویز کازرانیان
+          <v-col>
+            <div class="product-title">
+              {{ product.title }}
             </div>
-            <div>
-              <i class="fi-rr-book alaa-color relative-top" />
-              رشته تجربی
+            <div class="product-label">
+              <div>
+                <i class="fi-rr-graduation-cap alaa-color relative-top" />
+                پرویز کازرانیان
+              </div>
+              <div>
+                <i class="fi-rr-book alaa-color relative-top" />
+                رشته تجربی
+              </div>
             </div>
-          </div>
+          </v-col>
         </v-row>
         <v-row class="product-description">
-          <p>توضیحات:</p>
-          <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
-          </p>
+          <v-col>
+            <p>
+              لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
+            </p>
+          </v-col>
         </v-row>
       </v-col>
     </v-row>
-    <v-row class="py-10 flex-row justify-space-between">
+    <v-row class="pt-0 pb-8 py-xl-10 flex-row justify-space-between">
       <v-col md="5">
         <div class="download-description-box under-product-box d-flex flex-row justify-space-between">
           <div class="download-text">
@@ -70,6 +75,7 @@
             <v-btn
               height="56px"
               color="#f7bb41"
+              :elevation="0"
               @click="addToCart"
             >
               افزودن به سبد
@@ -257,10 +263,6 @@ export default {
   padding-top: 20px;
 }
 
-.product-info .product-description p:nth-child(1) {
-  font-size: 20px;
-}
-
 .product-info .product-description p {
   text-align: justify;
   line-height: 2;
@@ -275,5 +277,38 @@ export default {
   position: relative;
   top: 5px;
   font-size: 20px;
+}
+
+@media only screen and (max-width: 1903px) {
+  .product-info .product-image-col {
+    border-radius: 30px;
+    width: 260px;
+    height: 260px;
+  }
+
+  .product-info-header {
+    flex-direction: column;
+  }
+
+  .product-info-header .product-label {
+    padding-top: 16px;
+    justify-content: flex-start;
+  }
+
+  .buy-info-box .discount-info {
+    margin-right: 25px;
+  }
+
+  .product-info-box.col {
+    padding: 12px 10px;
+  }
+
+  .buy-info-box .add-to-cart {
+    width: 190px;
+  }
+
+  .product-info .product-description {
+    padding-top: 0;
+  }
 }
 </style>

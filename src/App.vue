@@ -16,7 +16,7 @@
         </v-row>
         <v-row>
           <v-col
-            md="8"
+            lg="8"
             cols="12"
             class="d-flex flex-column"
           >
@@ -32,7 +32,7 @@
             />
           </v-col>
           <v-col
-            md="4"
+            lg="4"
             cols="12"
           >
             <cart-component v-model="cart" />
@@ -89,10 +89,30 @@ export default {
         type
       })
     },
+    setCartInCookie (cart) {
+      const cookieCart = cart.cartItems.list.map( item => {
+        return {
+          product_id: item.product.id,
+          attribute: [],
+          extraAttribute: [],
+          products: []
+        }
+      })
+
+      this.$cookies.set('cartItems',JSON.stringify(cookieCart))
+      // console.log('ddd', JSON.parse(this.$cookies.get('cartItems')))
+    },
     addToCart (product) {
-      this.cart.addToCart(product)
-      this.toast(product.title.concat(' به سبد اضافه شد'))
+
+      const quantity = this.cart.addToCart(product)
+      if (quantity) {
+        this.toast(product.title.concat(' به سبد اضافه شد. تعداد در سبد: ' + quantity))
+      } else {
+        this.toast(product.title.concat(' به سبد اضافه نشد'), 'error')
+      }
       // this.cart.cartItems.list.push(product)
+
+      this.setCartInCookie(this.cart)
     },
     changeCurrentProduct (product) {
       console.log('test')
@@ -124,11 +144,18 @@ export default {
   }
 }
 
-.body {
-  padding: 12px 100px;
-}
-
 .Vue-Toastification__toast-body {
   font-family: IRANSans;
+}
+
+@media only screen and (min-width: 1904px) {
+  .body {
+    padding: 12px 100px;
+  }
+}
+@media only screen and (max-width: 1264px) {
+  .body {
+    padding: 12px 16px;
+  }
 }
 </style>
